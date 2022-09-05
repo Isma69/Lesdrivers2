@@ -1,0 +1,62 @@
+{
+  "name": "p3-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "migrateDB": "npx prisma migrate dev",
+    "resetDB": "npx prisma migrate reset",
+    "generate-db-client": "npx prisma generate",
+    "showDB": "npx prisma studio",
+    "migrate:deploy": "npx prisma migrate deploy",
+    "pre-start": "NODE_ENV=production npm-run-all migrate:deploy generate-db-client build",
+    "serve:lhci": "npm start",
+    "test:gui": "cypress open",
+    "test": "cypress run",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.6.2",
+    "@prisma/client": "^3.14.0",
+    "argon2": "^0.28.5",
+    "axios": "^0.27.2",
+    "check-password-strength": "^2.0.5",
+    "csrf": "^3.1.0",
+    "joi": "^17.6.0",
+    "next": "12.1.6",
+    "next-auth": "^4.5.0",
+    "npm-run-all": "^4.1.5",
+    "prisma": "^3.14.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-faq-component": "^1.3.4",
+    "react-hot-toast": "^2.2.0",
+    "use-persisted-state": "^0.3.3"
+  },
+  "devDependencies": {
+    "cypress": "^9.6.1",
+    "cypress-data-session": "^2.0.0",
+    "eslint": "8.16.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^12.3.7",
+    "prettier": "2.6.2"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "lint-staged": {
+    "*.{json,js,ts,jsx,tsx,html,css}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --quiet --cache --fix"
+    ]
+  }
+}

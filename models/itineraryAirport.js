@@ -1,0 +1,47 @@
+const db = require("../lib/prisma");
+
+module.exports.createItineraryAirport = async ({
+  originAdress,
+  destinationAdress,
+  departureDate,
+  departureTime,
+  numberPassengers,
+  numberLuggages,
+  vehicule,
+  siegeBebe,
+  rehausseur,
+  porteSki,
+  flightNumber,
+  somethingToSay,
+  price,
+  firstname,
+  lastname,
+  phoneNumber,
+  email,
+  address,
+  society,
+}) => {
+  return await db.ItineraryAirport.create({
+    data: {
+      originAdress,
+      destinationAdress,
+      departureDate,
+      departureTime,
+      numberPassengers,
+      numberLuggages,
+      vehicule,
+      siegeBebe,
+      rehausseur,
+      porteSki,
+      flightNumber,
+      somethingToSay,
+      price,
+      firstname,
+      lastname,
+      phoneNumber,
+      email,
+      address,
+      society,
+    },
+  });
+};

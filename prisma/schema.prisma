@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id             Int     @id @default(autoincrement())
+  firstname      String
+  lastname       String
+  email          String
+  hashedPassword String
+  phoneNumber    String
+  address        String?
+  society        String?
+
+  @@unique([email])
+}
+
+model FormCourseLyon {
+  id                 Int    @id @default(autoincrement())
+  departureAdress    String
+  arrivalAdress      String
+  departureOfDate    String
+  departureOfTime    String
+  vehiculeNeeded     String
+  numberOfPassengers Int
+  price              Int
+}
+
+model FormLocaChauff {
+  id                 Int    @id @default(autoincrement())
+  departureAdress    String
+  departureOfDate    String
+  departureOfTime    String
+  vehiculeNeeded     String
+  numberOfPassengers Int
+  numberOfHour       Int
+  price              Int
+}
+
+model ItineraryAirport {
+  id                Int     @id @default(autoincrement())
+  originAdress      String
+  destinationAdress String
+  departureDate     String
+  departureTime     String
+  numberPassengers  Int
+  numberLuggages    String
+  vehicule          String
+  siegeBebe         Boolean
+  rehausseur        Boolean
+  porteSki          Boolean
+  flightNumber      String?
+  somethingToSay    String?
+  price             Int
+  firstname         String
+  lastname          String
+  phoneNumber       String
+  email             String
+  address           String?
+  society           String?
+}
