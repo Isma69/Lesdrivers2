@@ -69,3 +69,10 @@ model ItineraryAirport {
   address           String?
   society           String?
 }
+
+model Vehicule {
+  id         Int @id @default(autoincrement())
+  type       String
+  pricePerKm Int
+  capacity   Int
+}
