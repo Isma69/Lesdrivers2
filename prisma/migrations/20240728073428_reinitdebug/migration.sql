@@ -66,13 +66,3 @@ CREATE TABLE `ItineraryAirport` (
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-CREATE TABLE `Vehicule` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `type` VARCHAR(255) NOT NULL,
-    `pricePerKm` INTEGER NOT NULL,
-    `capacity` INTEGER NOT NULL,
-    `picture` VARCHAR(255) NOT NULL,
-
-   PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

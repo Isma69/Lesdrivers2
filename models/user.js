@@ -8,11 +8,48 @@ const hashingOptions = {
   type: argon2.argon2id,
 };
 
-const hashPassword = (plainPassword) =>
-  argon2.hash(plainPassword, hashingOptions);
+const hashPassword = async (plainPassword) => {
+  try {
+    return await argon2.hash(plainPassword, hashingOptions);
+  } catch (err) {
+    console.error("Error hashing password:", err);
+    throw new Error("Error hashing password");
+  }
+};
 
-module.exports.validateUser = (data, forUpdate = false) =>
-  Joi.object({
+const verifyPassword = async (hash, plainPassword) => {
+  try {
+    console.log("Verifying password");
+    console.log("Hash:", hash);
+    console.log("Plain password:", plainPassword);
+    const result = await argon2.verify(hash, plainPassword, hashingOptions);
+    console.log("Password verification result:", result);
+    return result;
+  } catch (err) {
+    console.error("Error verifying password:", err);
+    return false;
+  }
+};
+
+const findUserByEmail = async (email) => {
+  try {
+    const user = await db.user.findUnique({ where: { email } });
+    console.log("findUserByEmail result:", user);
+    return user;
+  } catch (err) {
+    console.error("Error finding user by email:", err);
+    return null;
+  }
+};
+
+const getSafeAttributes = (user) => {
+  const { id, firstname, lastname, email, address, phoneNumber, society } =
+    user;
+  return { id, firstname, lastname, email, address, phoneNumber, society };
+};
+
+const validateUser = (data, forUpdate = false) => {
+  return Joi.object({
     firstname: Joi.string()
       .max(255)
       .presence(forUpdate ? "optional" : "required"),
@@ -39,8 +76,9 @@ module.exports.validateUser = (data, forUpdate = false) =>
       .max(20)
       .presence(forUpdate ? "optional" : "optional"),
   }).validate(data, { abortEarly: false }).error;
+};
 
-module.exports.createUser = async ({
+const createUser = async ({
   password,
   firstname,
   email,
@@ -63,24 +101,42 @@ module.exports.createUser = async ({
   });
 };
 
-module.exports.emailAlreadyExists = (email = "") => {
-  return db.user.findUnique({ where: { email } }).then((user) => !!user);
+const emailAlreadyExists = async (email = "") => {
+  try {
+    const user = await db.user.findUnique({ where: { email } });
+    return !!user;
+  } catch (err) {
+    console.error("Error checking if email already exists:", err);
+    return false;
+  }
 };
 
-module.exports.findUserByEmail = (email) =>
-  db.user.findUnique({ where: { email } }).catch(() => false);
+const deleteUserByEmail = async (email) => {
+  try {
+    return await db.user.delete({ where: { email } });
+  } catch (err) {
+    console.error("Error deleting user by email:", err);
+    return false;
+  }
+};
 
-module.exports.deleteAllUsers = db.user.deleteMany;
+const deleteAllUsers = async () => {
+  try {
+    return await db.user.deleteMany();
+  } catch (err) {
+    console.error("Error deleting all users:", err);
+    return false;
+  }
+};
 
-module.exports.deleteUserByEmail = (email) =>
-  db.user.delete({ where: { email } }).catch(() => false);
-
-module.exports.hashPassword = hashPassword;
-
-module.exports.verifyPassword = (hash, plain) =>
-  argon2.verify(hash, plain, hashingOptions);
-
-module.exports.getSafeAttributes = (user) => ({
-  ...user,
-  hashedPassword: undefined,
-});
+module.exports = {
+  validateUser,
+  createUser,
+  emailAlreadyExists,
+  findUserByEmail,
+  deleteUserByEmail,
+  deleteAllUsers,
+  hashPassword,
+  verifyPassword,
+  getSafeAttributes,
+};

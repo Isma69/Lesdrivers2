@@ -11,5 +11,5 @@ async function handleGetProfile(req, res) {
 
 export default function handler(req, res) {
   if (req.method === "GET") handleGetProfile(req, res);
-  else res.status(405).send("method not allowed");
+  else res.status(405).send("Method Not Allowed");
 }

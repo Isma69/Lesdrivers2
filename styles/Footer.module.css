@@ -15,6 +15,7 @@
   justify-content: space-around;
   font-family: "Gabriela", serif;
   padding-left: 10px;
+  margin-bottom: 0px;
 }
 .footerDivs {
   padding: 5px;
@@ -58,6 +59,7 @@
   }
   .footer {
     grid-gap: 100px;
+    margin-bottom: 0px;
   }
   .links a,
   .footerContact {

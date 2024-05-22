@@ -23,10 +23,11 @@ export default function TrajectFormDetails({
       behavior: "smooth",
     });
   };
+
   const AppearTarif = () => {
     const loadDistance = async () => {
       const response = await axios.get(
-        `https://maps.open-street.com/api/route/?origin=${latitude},${longitude}&destination=${aeroportCoordinates}&mode=driving&key=b3a2ba39c14fa86f221d83a472f6b281`
+        `https://maps.open-street.com/api/route/?origin=${latitude},${longitude}&destination=${aeroportCoordinates}&mode=driving&key=b3a2ba39c14fa86f221d83a472f6b281`,
       );
       setDistance(response.data.total_distance);
     };
@@ -34,9 +35,10 @@ export default function TrajectFormDetails({
     setTarifAppear(true);
     goToTarif();
   };
+
   const [originAdress, setOriginAdress] = useState("");
   const [destinationAdress, setDestinationAdress] = useState(
-    destinationAdressDefault
+    destinationAdressDefault,
   );
 
   useEffect(() => {
@@ -76,8 +78,8 @@ export default function TrajectFormDetails({
     changeRequiredNumFlight(newDestination);
   };
 
-  const [latitude, setLatitude] = useState([""]);
-  const [longitude, setLongitude] = useState([""]);
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
   const [text, setText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const setTextAndOriginAdress = async (address) => {
@@ -85,7 +87,7 @@ export default function TrajectFormDetails({
     setOriginAdress(address);
     if (text.length > 6) {
       const response = await axios.get(
-        `/api/autocomplete/?address=${encodeURIComponent(text)}`
+        `/api/autocomplete/?address=${encodeURIComponent(text)}`,
       );
       setSuggestions(response.data.features);
       setLatitude(response.data.features[0].geometry.coordinates[1]);
@@ -98,17 +100,19 @@ export default function TrajectFormDetails({
     setDestinationAdress(address);
     if (text.length > 6) {
       const response = await axios.get(
-        `/api/autocomplete/?address=${encodeURIComponent(text)}`
+        `/api/autocomplete/?address=${encodeURIComponent(text)}`,
       );
       setSuggestions(response.data.features);
       setLatitude(response.data.features[0].geometry.coordinates[1]);
       setLongitude(response.data.features[0].geometry.coordinates[0]);
     }
   };
+
   const onSuggestHandler = (text) => {
     setSuggestions([]);
     setText(text);
   };
+
   let price = Math.round((distance / 1000) * 1.8);
 
   if (
@@ -429,12 +433,12 @@ export default function TrajectFormDetails({
                 Pour réserver, vous pouvez :{" "}
                 <ul>
                   <li>
-                    <Link href="/login" passHref>
+                    <Link legacyBehavior href="/login" passHref>
                       <a>vous connecter</a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/signup" passHref>
+                    <Link legacyBehavior href="/signup" passHref>
                       <a>créer un nouveau compte</a>
                     </Link>
                   </li>

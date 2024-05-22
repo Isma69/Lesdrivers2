@@ -22,7 +22,7 @@ const Navbar = () => {
       className={`${styles.navbar} ${showLinks ? styles.show_menu : "hidden"}`}
     >
       <div className={styles.logocontainer}>
-        <Link href="/" className={styles.logoLink}>
+        <Link legacyBehavior href="/" className={styles.logoLink}>
           <a>
             <Image
               src={Logo}
@@ -35,7 +35,11 @@ const Navbar = () => {
         </Link>
         <ul className={styles.navItems}>
           <li>
-            <Link href="/notre_societe" className={styles.navLinks}>
+            <Link
+              legacyBehavior
+              href="/notre_societe"
+              className={styles.navLinks}
+            >
               <a
                 className={
                   currentRoute === "/notre_societe"
@@ -48,7 +52,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/nos_services" className={styles.navbarlink}>
+            <Link
+              legacyBehavior
+              href="/nos_services"
+              className={styles.navbarlink}
+            >
               <a
                 className={
                   currentRoute === "/nos_services"
@@ -61,7 +69,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/infos_utiles" className={styles.navbarlink}>
+            <Link
+              legacyBehavior
+              href="/infos_utiles"
+              className={styles.navbarlink}
+            >
               <a
                 className={
                   currentRoute === "/infos_utiles"
@@ -74,7 +86,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/faq" className={styles.navbarlink}>
+            <Link legacyBehavior href="/faq" className={styles.navbarlink}>
               <a
                 className={
                   currentRoute === "/faq" ? styles.active : styles.non_active
@@ -85,7 +97,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/contact" className={styles.navbarlink}>
+            <Link legacyBehavior href="/contact" className={styles.navbarlink}>
               <a
                 className={
                   currentRoute === "/contact"
@@ -98,7 +110,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/transfert_aeroport" className={styles.navbarlink}>
+            <Link
+              legacyBehavior
+              href="/transfert_aeroport"
+              className={styles.navbarlink}
+            >
               <a>
                 <button
                   onClick={() => router.push("/transfert_aeroport")}
@@ -112,7 +128,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className={styles.userIcon}>
-        <Link href="/login">
+        <Link legacyBehavior href="/login">
           <a>
             <Image
               src={User}
@@ -123,7 +139,7 @@ const Navbar = () => {
             />
           </a>
         </Link>
-        <Link href="/">
+        <Link legacyBehavior href="/">
           <a>
             <Image
               src={LogoFR}
@@ -134,7 +150,7 @@ const Navbar = () => {
             />
           </a>
         </Link>
-        <Link href="/">
+        <Link legacyBehavior href="/">
           <a>
             <Image
               src={LogoANG}

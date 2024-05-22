@@ -25,7 +25,7 @@ export default function footer() {
             <div className={styles.socialIcons}>
               <div className={styles.image}>
                 <div className={styles.icons}>
-                  <Link href="/">
+                  <Link legacyBehavior href="/">
                     <a>
                       <Image
                         src="/images/oveus.png"
@@ -38,7 +38,7 @@ export default function footer() {
                 </div>
               </div>
               <div className={styles.icons}>
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a>
                     <Image
                       src="/images/frlangue.png"
@@ -50,7 +50,7 @@ export default function footer() {
                 </Link>
               </div>
               <div className={styles.icons}>
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a>
                     <Image
                       src="/images/traxion.png"
@@ -62,7 +62,7 @@ export default function footer() {
                 </Link>
               </div>
               <div className={styles.icons}>
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a>
                     <Image
                       src="/images/ebv.png"
@@ -77,16 +77,16 @@ export default function footer() {
           </div>
         </div>
         <div className={styles.logoContainer}>
-          <Image
+          {/* <Image
             alt={`logo`}
             className={styles.footerLogo}
             src={`/images/logo-lesdrivers.png`}
             width={80}
             height={80}
-          />
-          <p className={styles.logoText}>
+          /> */}
+          {/* <p className={styles.logoText}>
             © All Rights Reserved To The Drivers Airport 2022
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
