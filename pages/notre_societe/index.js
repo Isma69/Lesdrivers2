@@ -13,7 +13,6 @@ export default function NosServices() {
     <Layout pageTitle="Les Drivers - Nos Services">
       <PhoneButton />
       <div className={styles.mainContainer}>
-        <div className={styles.bgImage} />
         <Image
           src={logo}
           width={100}

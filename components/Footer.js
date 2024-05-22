@@ -76,18 +76,7 @@ export default function footer() {
             </div>
           </div>
         </div>
-        <div className={styles.logoContainer}>
-          {/* <Image
-            alt={`logo`}
-            className={styles.footerLogo}
-            src={`/images/logo-lesdrivers.png`}
-            width={80}
-            height={80}
-          /> */}
-          {/* <p className={styles.logoText}>
-            © All Rights Reserved To The Drivers Airport 2022
-          </p> */}
-        </div>
+        <div className={styles.logoContainer}></div>
       </div>
     </div>
   );

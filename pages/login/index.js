@@ -128,7 +128,7 @@ export default function LoginPage({ csrfToken }) {
   );
 }
 
-export async function getServerSideProps(CurrentUserContext) {
+export async function getServerSideProps() {
   const csrfToken = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/csrf`)
     .then((res) => res.json())
     .then((data) => data.csrfToken);
@@ -136,7 +136,6 @@ export async function getServerSideProps(CurrentUserContext) {
   return {
     props: {
       csrfToken,
-      CurrentUserContext,
     },
   };
 }
