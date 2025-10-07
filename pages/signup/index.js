@@ -35,7 +35,7 @@ export default function SignupPage() {
 
     if (["Too Weak", "Weak"].includes(passwordStrength(password).value))
       return setError(
-        "Votre mot de passe doit contenir 1 lettre Minuscule, 1 Majuscule, un chiffre et un caractère spécial."
+        "Votre mot de passe doit contenir 1 lettre Minuscule, 1 Majuscule, un chiffre et un caractère spécial.",
       );
 
     axios
