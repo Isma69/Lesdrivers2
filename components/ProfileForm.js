@@ -35,13 +35,13 @@ export default function ProfilForm({
   const [problemWithEmail, setProblemWithEmail] = useState(false);
 
   const [firstname, setFirstname] = useState(
-    currentUserProfile?.firstname || ""
+    currentUserProfile?.firstname || "",
   );
   const [lastname, setLastname] = useState(currentUserProfile?.lastname || "");
   const [email, setEmail] = useState(currentUserProfile?.email || "");
   const [address, setAddress] = useState(currentUserProfile?.address || "");
   const [phoneNumber, setPhoneNumber] = useState(
-    currentUserProfile?.phoneNumber || ""
+    currentUserProfile?.phoneNumber || "",
   );
   const [society, setSociety] = useState(currentUserProfile?.society || "");
 
@@ -99,7 +99,7 @@ export default function ProfilForm({
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_FORM_RESERVATIONS,
         templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
       )
       .then(
         function () {
@@ -111,7 +111,7 @@ export default function ProfilForm({
         function (error) {
           console.log("EMAILJS FAILED...", error);
           setProblemWithEmail(true);
-        }
+        },
       );
   };
   return (

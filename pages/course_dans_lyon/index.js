@@ -74,7 +74,7 @@ export default function CoursedansLyon() {
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_FORM_RESERVATIONS,
       form.current,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
     );
   };
 
@@ -91,7 +91,7 @@ export default function CoursedansLyon() {
     setDepartureAdress(textDepart);
     if (textDepart.length > 6) {
       const response = await axios.get(
-        `/api/autocomplete/?address=${encodeURIComponent(textDepart)}`
+        `/api/autocomplete/?address=${encodeURIComponent(textDepart)}`,
       );
       setDepartSuggestions(response.data.features);
       setLatitudeDepart(response.data.features[0].geometry.coordinates[1]);
@@ -104,7 +104,7 @@ export default function CoursedansLyon() {
     setArrivalAdress(textArrivee);
     if (textArrivee.length > 6) {
       const response = await axios.get(
-        `/api/autocomplete/?address=${encodeURIComponent(textArrivee)}`
+        `/api/autocomplete/?address=${encodeURIComponent(textArrivee)}`,
       );
       setArriveeSuggestions(response.data.features);
       setLatitudeArrivee(response.data.features[0].geometry.coordinates[1]);
@@ -124,7 +124,7 @@ export default function CoursedansLyon() {
   useEffect(() => {
     const loadDistance = async () => {
       const response = await axios.get(
-        `https://maps.open-street.com/api/route/?origin=${latitudeDepart},${longitudeDepart}&destination=${latitudeArrivee},${longitudeArrivee}&mode=driving&key=b3a2ba39c14fa86f221d83a472f6b281`
+        `https://maps.open-street.com/api/route/?origin=${latitudeDepart},${longitudeDepart}&destination=${latitudeArrivee},${longitudeArrivee}&mode=driving&key=b3a2ba39c14fa86f221d83a472f6b281`,
       );
       setDistance(response.data.total_distance);
     };

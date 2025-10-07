@@ -80,7 +80,7 @@ export default function LocationAvecChauffeur() {
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_FORM_RESERVATIONS,
       form.current,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
     );
   };
 
@@ -94,7 +94,7 @@ export default function LocationAvecChauffeur() {
     setDepartureAdress(address);
     if (departureAdress.length > 6) {
       const response = await axios.get(
-        `/api/autocomplete/?address=${encodeURIComponent(departureAdress)}`
+        `/api/autocomplete/?address=${encodeURIComponent(departureAdress)}`,
       );
       setSuggestions(response.data.features);
     }

@@ -13,7 +13,7 @@ export default function Autocompletion() {
     setText(address);
     if (text.length > 6) {
       const response = await axios.get(
-        `/api/autocomplete/?address=${encodeURIComponent(text)}`
+        `/api/autocomplete/?address=${encodeURIComponent(text)}`,
       );
       setSuggestions(response.data.features);
     }
